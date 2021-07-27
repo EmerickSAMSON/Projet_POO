@@ -9,6 +9,7 @@ class AgenceController{
   private $descriptionAgence;
   private $cpAgence;
   private $photoAgence;
+  private $agenceModel;
 
   public function __construct($TA,$AA,$VA,$DA,$CPA,$PA)
   {
@@ -82,10 +83,17 @@ class AgenceController{
 
     }
 
+    public function getAgenceModel()
+    {
+      return $this->agenceModel;
+    }
 
     public function inscription(){
       $agenceModel = new AgenceModel;
+      $agenceModel->insert($this->titreAgence,$this->adresseAgence,$this->villeAgence,$this->descriptionAgence,$this->cpAgence,$this->photoAgence);
     }
+
+
 
 
 }
