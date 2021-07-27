@@ -1,10 +1,25 @@
 
 <?php
 
-
 require_once('../src/controllers/agence.controller.php');
+require_once('../src/models/agence.model.php');
 
-$Agence = new AgenceController($_POST['titre'],$_POST['adresse'],$_POST['description'],$_POST['ville'],$_POST['cp'],$_FILES);
+if (!empty($_POST['titre']) && !empty($_POST['adresse']) && !empty(['description']) && !empty($_POST['ville']) && !empty($_POST['cp']) && !empty($_FILES['file'])) {
+
+  $tmpName = $_FILES['file']['tmp_name'];
+  $name = $_FILES['file']['name'];
+
+  move_uploaded_file($tmpName, './upload/' . $name);
+
+  $Agence = new AgenceController($_POST['titre'],$_POST['adresse'],$_POST['description'],$_POST['ville'],$_POST['cp'],$_FILES);
+  
+  $Agence->inscription();
+
+  // echo '<pre>';
+  // print_r($Agence);
+  // echo '</pre>';
+}
+
 
 
 ?>
@@ -51,10 +66,10 @@ $Agence = new AgenceController($_POST['titre'],$_POST['adresse'],$_POST['descrip
 
   <?php
 
-  echo '<pre>';
+  // echo '<pre>';
   // print_r($Agence);
-  print_r(get_declared_classes());
-  echo '</pre>';
+  // print_r(get_declared_classes());
+  // echo '</pre>';
 
 ?>
 

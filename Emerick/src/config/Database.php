@@ -3,7 +3,7 @@
 class Database{
 
   private $host="localhost";
-  private $dbname="php";
+  private $dbname="projet_poo";
   private $username="root";
   private $password="";
 
