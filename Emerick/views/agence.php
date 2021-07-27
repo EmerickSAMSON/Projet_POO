@@ -4,14 +4,29 @@
 require_once('../src/controllers/agence.controller.php');
 require_once('../src/models/agence.model.php');
 
-if (!empty($_POST['titre']) && !empty($_POST['adresse']) && !empty(['description']) && !empty($_POST['ville']) && !empty($_POST['cp']) && !empty($_FILES['file'])) {
+if (!empty($_POST['titre']) && !empty($_POST['adresse']) && !empty(['description']) && !empty($_POST['ville']) && !empty($_POST['cp']) && !empty($_FILES['photo'])) {
 
-  $tmpName = $_FILES['file']['tmp_name'];
-  $name = $_FILES['file']['name'];
+  if (isset($_FILES['photo'])) {
+    
+    $tmpName = $_FILES['photo']['tmp_name'];
+    $name = $_FILES['photo']['name'];
+  
+    move_uploaded_file($tmpName, './upload/' . $name);
 
-  move_uploaded_file($tmpName, './upload/' . $name);
+    $tabExtension = explode('.', $name);
+    $extension = strtolower(end($tabExtension));
 
-  $Agence = new AgenceController($_POST['titre'],$_POST['adresse'],$_POST['description'],$_POST['ville'],$_POST['cp'],$_FILES);
+    $extensions = ['jpg', 'png', 'jpeg'];
+    if(in_array($extension, $extensions)){
+        move_uploaded_file($tmpName, './upload/'.$name);
+    }
+    else{
+        echo "Mauvaise extension";
+    }
+  }
+  
+
+  $Agence = new AgenceController($_POST['titre'],$_POST['adresse'],$_POST['description'],$_POST['ville'],$_POST['cp'],'./upload/' . $name);
   
   $Agence->inscription();
 
