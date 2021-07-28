@@ -92,11 +92,6 @@ class AgenceController{
       $agenceModel = new AgenceModel;
       $agenceModel->insert($this->titreAgence,$this->adresseAgence,$this->villeAgence,$this->descriptionAgence,$this->cpAgence,$this->photoAgence);
     }
-
-
-
-
 }
-
 
 ?>
