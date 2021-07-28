@@ -1,6 +1,6 @@
 <?php
 
-class VoitureController
+class VehiculeController
 {
   private $idVehicule;
   private $IDAgence;
@@ -12,8 +12,9 @@ class VoitureController
   private $prixVehicule;
 
 
-  public function __construct($tv, $marv, $modv, $desv, $phov, $pv)
+  public function __construct($IDAgence, $tv, $marv, $modv, $desv, $phov, $pv)
   {
+    $this->setIDAgence($IDAgence);
     $this->setTitreVehicule($tv);
     $this->setMarqueVehicule($marv);
     $this->setModeleVehicule($modv);
@@ -21,9 +22,6 @@ class VoitureController
     $this->setDescriptionVehicule($desv);
     $this->setPrixVehicule($pv);
   }
-
-
-
 
   public function getIdVehicule()
   {
@@ -34,6 +32,11 @@ class VoitureController
   public function getIDAgence()
   {
     return $this->IDAgence;
+  }
+
+  public function setIDAgence($IDAgence)
+  {
+    return $this->IDAgence = $IDAgence;
   }
 
   public function getTitreVehicule()
@@ -70,7 +73,6 @@ class VoitureController
     return $this;
   }
   //
-
 
   public function getDescriptionVehicule()
   {
@@ -109,8 +111,10 @@ class VoitureController
 
   public function inscription()
   {
+    var_dump('Test inscription');
     $vehiculeModele = new VehiculeModel;
     $vehiculeModele->insert(
+      $this->IDAgence,
       $this->titreVehicule,
       $this->marqueVehicule,
       $this->modeleVehicule,

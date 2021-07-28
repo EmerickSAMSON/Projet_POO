@@ -11,20 +11,29 @@ class AgenceModel
     $this->connexion = $db->getPDO();
   }
 
-  public function insert($titreAgence, $adresseAgence, $villeAgence, $descriptionAgence, $cpAgence, $photoAgence)
-  {
-    var_dump($titreAgence, $adresseAgence, $villeAgence, $descriptionAgence, $cpAgence, $photoAgence);
 
-    $request = $this->connexion->prepare("INSERT INTO agences (titre_agence, adresse, ville, description, cp, photo, date_created) VALUES (:titre_agence, :adresse, :ville, :description, :cp, :photo, NOW())");
+  //CRUD -->CREATE
+  public function insert($titreAgence, $adresseAgence, $villeAgence, $cpAgence, $descriptionAgence, $photoAgence)
+  {
+    var_dump($titreAgence, $adresseAgence, $villeAgence, $cpAgence, $descriptionAgence, $photoAgence);
+
+    $request = $this->connexion->prepare("INSERT INTO agences (titre_agence, adresse, ville, cp, description,  photo, date_created) VALUES (:titre_agence, :adresse, :ville,:cp, :description, :photo, NOW())");
 
     $request->execute([
       ":titre_agence" => $titreAgence,
       ":adresse" => $adresseAgence,
       ":ville" => $villeAgence,
-      ":description" => $descriptionAgence,
       ":cp" => $cpAgence,
+      ":description" => $descriptionAgence,
       ":photo" => $photoAgence
     ]);
+  }
+
+  public function read(){
+    $request = $this->connexion->prepare('SELECT * FROM agences');
+    $request->execute();
+    $result = $request->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
   }
 }
 
