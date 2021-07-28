@@ -1,12 +1,12 @@
 <?php
 
+
 class Database{
 
   private $host="localhost";
   private $dbname="projet_poo";
   private $username="root";
   private $password="";
-
 
 
   public function getPDO(){
