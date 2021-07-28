@@ -94,41 +94,41 @@ $tableau= $result->read();
 <div id="formulaire">
 
   
-    <div>
+    <div class="champ">
       
-        <label for="titre">Titre</label>
+        <label for="titre">Titre :</label>
         <input type="text" id="titre" name="titre">
       
     </div>
-    <div>
+    <div class="champ">
       
-      <label for="adresse">Adresse</label>
+      <label for="adresse">Adresse :</label>
       <input type="text" id="adresse" name="adresse">
       
     </div>
-    <div>
+    <div class="champ">
       
-      <label for="description">description</label>
+      <label for="description">Description :</label>
       <input type="text" id="description" name="description">
   
     </div>
   
   
-    <div>
+    <div class="champ">
   
-      <label for="ville">Ville</label>
+      <label for="ville">Ville :</label>
       <input type="text" id="ville" name="ville">
   
     </div>
-    <div>
+    <div class="champ">
   
-      <label for="cp">Code Postal</label>
+      <label for="cp">Code Postal :</label>
       <input type="text" id="cp" name="cp">
   
     </div>
     <div>
   
-      <label for="photo">Photo</label>
+      <label for="photo">Photo :</label>
       <input type="file" id="photo" name="photo">
   
     </div>
