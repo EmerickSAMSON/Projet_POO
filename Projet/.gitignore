@@ -1,1 +1,11 @@
 /views/upload
+/views/assets/font
+/views/assets/img
+/views/assets/js
+/views/agence.php
+/views/membre.php
+/src/config
+/src/controller/agence.controller.php
+/src/controller/membre.controller.php
+/src/models/agence.model.php
+/src/models/membre.model.php
