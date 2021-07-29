@@ -36,13 +36,11 @@ class VehiculeModel
       ":prix_journalier" => $prixVehicule
     ]);
   }
-
-//   public function getOne($IDAgence){
-//   $request = $this->connexion->prepare('SELECT id_agence FROM agences WHERE id_agence=1');
-//   var_dump($request); 
-//   $request->execute([
-//       ':id_agence' => $IDAgence
-//   ]);
-// }
+  public function read(){ //rajout de a.titre_agence en tant que test
+    $request = $this->connexion->prepare('SELECT * FROM vehicule LEFT JOIN agences ON vehicule.id_agence = agences.id_agence');
+  $request->execute(/*[":id_agence"=>$_GET['titre_agence']]*/);
+    $result = $request->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+  }
 }
 

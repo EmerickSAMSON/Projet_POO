@@ -108,7 +108,7 @@
         </div>
         <div>
 
-          <label for="description">description</label>
+          <label for="description">Description</label>
           <input type="text" id="description" name="description">
 
         </div>

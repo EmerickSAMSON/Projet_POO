@@ -1,32 +1,28 @@
 <?php
 
-class AgenceModel
-{
-
+class AgenceModel{
+  
   private $connexion;
 
   public function __construct()
   {
-    $db = new Database();
-    $this->connexion = $db->getPDO();
+    $db= new Database();
+    $this->connexion=$db->getPDO();
   }
 
+  public function insert($titreAgence, $adresseAgence, $villeAgence, $cpAgence,$descriptionAgence, $photoAgence){
 
-  //CRUD -->CREATE
-  public function insert($titreAgence, $adresseAgence, $villeAgence, $cpAgence, $descriptionAgence, $photoAgence)
-  {
-    var_dump($titreAgence, $adresseAgence, $villeAgence, $cpAgence, $descriptionAgence, $photoAgence);
-
-    $request = $this->connexion->prepare("INSERT INTO agences (titre_agence, adresse, ville, cp, description,  photo, date_created) VALUES (:titre_agence, :adresse, :ville,:cp, :description, :photo, NOW())");
+    $request= $this->connexion->prepare("INSERT INTO agences (titre_agence, adresse, ville,  cp, description, photo, date_created) VALUES (:titre_agence, :adresse, :ville, :cp, :description , :photo, NOW())");
 
     $request->execute([
-      ":titre_agence" => $titreAgence,
-      ":adresse" => $adresseAgence,
-      ":ville" => $villeAgence,
-      ":cp" => $cpAgence,
-      ":description" => $descriptionAgence,
-      ":photo" => $photoAgence
+      ":titre_agence"=>$titreAgence,
+      ":adresse"=>$adresseAgence,
+      ":ville"=>$villeAgence,
+      ":cp"=>$cpAgence,
+      ":description"=>$descriptionAgence,
+      ":photo"=>$photoAgence
     ]);
+
   }
 
   public function read(){
@@ -35,6 +31,9 @@ class AgenceModel
     $result = $request->fetchAll(PDO::FETCH_ASSOC);
     return $result;
   }
+
+  
+  
 }
 
 require_once('../src/config/Database.php');
